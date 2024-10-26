@@ -3,6 +3,11 @@
   "ref": "Réf",
   "title": "Titre",
   "duration": "Durée",
+  "options": {
+    "video-lang": "Langue des vidéos",
+    "ui-lang": "Langue de l'interface",
+    "switch": "changer"
+  },
   "navbar": {
     "story": "Histoire",
     "season": "Saison",

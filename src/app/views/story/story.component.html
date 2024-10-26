@@ -1,5 +1,15 @@
-<button (click)="switchVideoLang()">Switch Video lang</button>
-<button (click)="switchUILang()">Switch UI lang</button>
+<div>
+  {{"options.video-lang" | translate}}: <b>{{videoLang}}</b>
+  (<p-button (click)="switchVideoLang()" styleClass="p-0" [link]="true">
+    {{"options.switch" | translate}}
+  </p-button>)
+</div>
+<div>
+  {{"options.ui-lang" | translate}}: <b>{{getUIlLand()}}</b>
+  (<p-button (click)="switchUILang()" styleClass="p-0" [link]="true">
+    {{"options.switch" | translate}}
+  </p-button>)
+</div>
 
 @for (season of seasons; track $index) {
   <h2>{{ season.ref }}-{{ season.title }}</h2>
