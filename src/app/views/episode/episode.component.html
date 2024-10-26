@@ -1,0 +1,17 @@
+<app-navbar [ref]="episodeRef"></app-navbar>
+
+<div class="flex flex-row gap-10">
+  <div>
+    @if (episode) {
+      <youtube-player [width]="360" [height]="641" [videoId]="episode.video.yt"></youtube-player>
+    }
+  </div>
+
+  <div>
+    <ul class="list-disc">
+      <li>{{"ref" | translate}}: {{episodeRef}}</li>
+      <li>{{"title" | translate}}: {{episode?.title}}</li>
+      <li>{{"duration" | translate}}: {{episode?.video?.duration}}</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+{
+  "main-title": "Les Archives de Grandshelt",
+  "ref": "Réf",
+  "title": "Titre",
+  "duration": "Durée",
+  "navbar": {
+    "story": "Histoire",
+    "season": "Saison",
+    "chapter": "Chapitre",
+    "part": "Partie",
+    "episode": "Épisode"
+  }
+}

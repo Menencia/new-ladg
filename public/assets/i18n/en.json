@@ -1,0 +1,13 @@
+{
+  "main-title": "Grandshelt Archives",
+  "ref": "Ref",
+  "title": "Title",
+  "duration": "Duration",
+  "navbar": {
+    "story": "Story",
+    "season": "Season",
+    "chapter": "Chapter",
+    "part": "Part",
+    "episode": "Episode"
+  }
+}

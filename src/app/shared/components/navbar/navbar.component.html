@@ -1,0 +1,16 @@
+<ol class="breadcrump">
+  <li><a [routerLink]="'/story'">{{'navbar.story' | translate}}</a></li>
+
+  <li>{{'navbar.season' | translate}} {{season}}</li>
+
+  <li>
+    {{'navbar.chapter' | translate}} {{chapter}}
+    @if (part) {
+      - {{'navbar.part' | translate}} {{part}}
+    }
+  </li>
+
+  @if (episode) {
+    <li>{{'navbar.episode' | translate}} {{episode}}</li>
+  }
+</ol>

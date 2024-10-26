@@ -1,0 +1,17 @@
+ol {
+  background-color: #e6d4b6;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  li {
+    display: inline;
+  }
+
+  li+li:before {
+    display: inline-block;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    color: #868e96;
+    content: "/";
+  }
+}
