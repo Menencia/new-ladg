@@ -3,8 +3,8 @@
   "ref": "Ref",
   "title": "Title",
   "duration": "Duration",
-  "previous-episode": "Previous",
-  "next-episode": "Next",
+  "previous": "Previous",
+  "next": "Next",
   "options": {
     "video-lang": "Video language",
     "ui-lang": "Interface language",

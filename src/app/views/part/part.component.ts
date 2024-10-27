@@ -5,6 +5,7 @@ import { TableModule } from 'primeng/table';
 import { DataService } from '../../data.service';
 import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
 import { Episode } from '../../shared/interfaces/episode';
+import { ResultPart } from '../../shared/interfaces/result-part';
 
 @Component({
   selector: 'app-part',
@@ -16,6 +17,8 @@ import { Episode } from '../../shared/interfaces/episode';
 export class PartComponent {
   episodes: Episode[] = [];
   partRef = '';
+  previousPart?: ResultPart;
+  nextPart?: ResultPart;
 
   constructor(
     private dataService: DataService,
@@ -26,6 +29,8 @@ export class PartComponent {
     this.route.paramMap.subscribe(params => {
       this.partRef = params.get('ref') ?? '';
       this.dataService.getPart(this.partRef).subscribe(result => this.episodes = result?.episodes ?? []);
+      this.dataService.getPreviousPart(this.partRef).subscribe(result => this.previousPart = result);
+      this.dataService.getNextPart(this.partRef).subscribe(result => this.nextPart = result);
     });
   }
 

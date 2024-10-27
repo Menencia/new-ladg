@@ -20,3 +20,19 @@
 
   <div></div>
 </div>
+
+@if (previousPart) {
+  <div>
+    <a [routerLink]="'/story/part/'+previousPart.ref">
+      {{"previous" | translate}}: {{previousPart.ref}}
+    </a>
+  </div>
+}
+
+@if (nextPart) {
+  <div>
+    <a [routerLink]="'/story/part/'+nextPart.ref">
+      {{"next" | translate}}: {{nextPart.ref}}
+    </a>
+  </div>
+}
