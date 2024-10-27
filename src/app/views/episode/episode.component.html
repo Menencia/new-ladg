@@ -7,7 +7,17 @@
 }
 
 @if (previousEpisode) {
-  <a [routerLink]="'/story/episode/'+previousEpisode.ref">
-    {{"previous-episode" | translate}}: {{previousEpisode.episode.title}}
-  </a>
+  <div>
+    <a [routerLink]="'/story/episode/'+previousEpisode.ref">
+      {{"previous-episode" | translate}}: {{previousEpisode.episode.ref}} - {{previousEpisode.episode.title}}
+    </a>
+  </div>
+}
+
+@if (nextEpisode) {
+  <div>
+    <a [routerLink]="'/story/episode/'+nextEpisode.ref">
+      {{"next-episode" | translate}}: {{nextEpisode.episode.ref}} - {{nextEpisode.episode.title}}
+    </a>
+  </div>
 }

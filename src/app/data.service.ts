@@ -5,6 +5,7 @@ import { Episode } from './shared/interfaces/episode';
 import { ResultEpisode } from './shared/interfaces/result-episode';
 import { ResultPart } from './shared/interfaces/result-part';
 import { Season } from './shared/interfaces/season';
+import { RefUtil } from './shared/utils/ref.utils';
 
 @Injectable({
   providedIn: 'root'
@@ -69,22 +70,30 @@ export class DataService {
     )
   }
 
-  getPreviousEpisode(episodeRef: string): Observable<ResultEpisode | undefined> {
-    const x = this.splitXY(episodeRef);
-    if (parseInt(x.Y) > 1) {
-      const previousEpisode = (parseInt(x.Y) - 1);
-      return this.getEpisode(x.X + '-' + previousEpisode)
-        .pipe(
-          map(episode => {
-            if (episode) {
-              return { ref: x.X + '-' + previousEpisode, episode };
-            } else {
-              return undefined;
-            }
-          })
+  getNextPart(partRef: string): Observable<ResultPart | undefined> {
+    const seasons$ = (this.seasons.length === 0) ? this.getSeasons() : of(this.seasons);
+    return seasons$.pipe(
+      switchMap(seasons => {
+        const parts = seasons.flatMap(season =>
+          season.parts.map(part => ({
+            ...part,
+            ref: `${season.ref}-${part.ref}`
+          }))
         );
+        const index = parts.findIndex(item => item.ref === partRef);
+        return index + 1 < parts.length ? this.getPart(parts[index + 1].ref) : of(undefined);
+      })
+    )
+  }
+
+  getPreviousEpisode(episodeRef: string, resultPart: ResultPart): Observable<ResultEpisode | undefined> {
+    const { part: X, episode: Y } = RefUtil.getPartFromEpisode(episodeRef);
+    if (parseInt(Y) > 1) {
+      const previousEpisode = (parseInt(Y) - 1);
+      const episode = resultPart.episodes[previousEpisode - 1];
+      return of({ ref: X + '-' + previousEpisode, episode });
     } else {
-      return this.getPreviousPart(x.X).pipe(
+      return this.getPreviousPart(X).pipe(
         map(result => {
           if (result) {
             const episode = result.episodes?.slice(-1)[0];
@@ -97,11 +106,23 @@ export class DataService {
     }
   }
 
-  private splitXY(input: string): { X: string, Y: string } {
-    const lastIndex = input.lastIndexOf('-');
-    if (lastIndex === -1) return { X: input, Y: '' }; // Case where there's no hyphen
-    const X = input.slice(0, lastIndex);
-    const Y = input.slice(lastIndex + 1);
-    return { X, Y };
+  getNextEpisode(episodeRef: string, resultPart: ResultPart): Observable<ResultEpisode | undefined> {
+    const { part: X, episode: Y } = RefUtil.getPartFromEpisode(episodeRef);
+    if (parseInt(Y) < resultPart.episodes.length) {
+      const nextEpisode = (parseInt(Y) + 1);
+      const episode = resultPart.episodes[ nextEpisode - 1 ];
+      return of({ ref: X + '-' + nextEpisode, episode });
+    } else {
+      return this.getNextPart(X).pipe(
+        map(result => {
+          if (result) {
+            const episode = result.episodes[0];
+            return { ref: result.ref + '-' + episode.ref, episode };
+          } else {
+            return undefined;
+          }
+        })
+      )
+    }
   }
 }
