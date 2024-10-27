@@ -2,6 +2,12 @@
 
 <h2>{{episode?.title}} ({{episode?.video?.duration}})</h2>
 
-@if (episode) {
-  <youtube-player [width]="360" [height]="641" [videoId]="episode.video.yt"></youtube-player>
+@if (videoId) {
+  <youtube-player [width]="360" [height]="641" [videoId]="videoId"></youtube-player>
+}
+
+@if (previousEpisode) {
+  <a [routerLink]="'/story/episode/'+previousEpisode.ref">
+    {{"previous-episode" | translate}}: {{previousEpisode.episode.title}}
+  </a>
 }

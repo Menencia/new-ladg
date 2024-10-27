@@ -25,7 +25,7 @@ export class PartComponent {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.partRef = params.get('ref') ?? '';
-      this.dataService.getPart(this.partRef).subscribe(episodes => this.episodes = episodes);
+      this.dataService.getPart(this.partRef).subscribe(result => this.episodes = result?.episodes ?? []);
     });
   }
 
