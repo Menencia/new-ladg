@@ -6,7 +6,8 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { DataService } from '../../data.service';
-import { Season } from '../../shared/interfaces/season';
+import { DisplaySeason } from '../../shared/interfaces/season';
+import { OrderUtils } from '../../shared/utils/order.utils';
 
 @Component({
   selector: 'app-story',
@@ -16,7 +17,7 @@ import { Season } from '../../shared/interfaces/season';
   styleUrl: './story.component.scss'
 })
 export class StoryComponent {
-  seasons: Season[] = [];
+  seasons: DisplaySeason[] = [];
   uiLang = 'en';
   videoLang = 'en';
 
@@ -32,7 +33,12 @@ export class StoryComponent {
   private getSeasons() {
     this.dataService.lang = this.videoLang;
     this.dataService.getSeasons().subscribe(seasons => {
-      this.seasons = seasons;
+      this.seasons = seasons.map(season => {
+        return {
+          ...season,
+          parts: OrderUtils.groupByPrefix(season.parts)
+        };
+      });
     });
   }
 

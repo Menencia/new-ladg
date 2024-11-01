@@ -1,5 +1,8 @@
 {
   "main-title": "Les Archives de Grandshelt",
+  "story": {
+    "parts": "Parties"
+  },
   "ref": "Réf",
   "title": "Titre",
   "duration": "Durée",

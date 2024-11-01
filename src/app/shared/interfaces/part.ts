@@ -1,5 +1,5 @@
 export interface Part {
   ref: string;
-  title: string;
+  title?: string;
   yt: string;
 }
