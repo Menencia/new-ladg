@@ -1,5 +1,10 @@
 {
   "main-title": "Grandshelt Archives",
+  "home": {
+    "desc": "Currently, two languages are available:",
+    "story-en": "English",
+    "story-fr": "French"
+  },
   "story": {
     "season": "Season",
     "parts": "Parts"

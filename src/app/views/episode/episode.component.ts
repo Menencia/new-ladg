@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { YoutubePlayerComponent } from 'ngx-youtube-player';
+import { ButtonModule } from 'primeng/button';
 import { DataService } from '../../data.service';
 import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
 import { Episode } from '../../shared/interfaces/episode';
@@ -11,7 +12,7 @@ import { RefUtil } from '../../shared/utils/ref.utils';
 @Component({
   selector: 'app-part',
   standalone: true,
-  imports: [YoutubePlayerComponent, NavbarComponent, TranslateModule, RouterModule],
+  imports: [YoutubePlayerComponent, NavbarComponent, TranslateModule, RouterModule, ButtonModule],
   templateUrl: './episode.component.html',
   styleUrl: './episode.component.scss'
 })
@@ -24,24 +25,36 @@ export class EpisodeComponent {
 
   constructor(
     private dataService: DataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.episodeRef = params.get('ref') ?? '';
-      this.videoId = undefined;
-      const { part, episode } = RefUtil.getPartFromEpisode(this.episodeRef);
-      this.dataService.getPart(part).subscribe(result => {
-        if (result) {
-          this.episode = result.episodes.find(e => e.ref === episode);
-          if (this.episode) {
-            this.dataService.getPreviousEpisode(this.episodeRef, result).subscribe(episode => this.previousEpisode = episode);
-            this.dataService.getNextEpisode(this.episodeRef, result).subscribe(episode => this.nextEpisode = episode);
-            this.videoId = this.episode.video.yt;
+      const lang = params.get('lang');
+      const episodeRef = params.get('ref');
+      if (lang && episodeRef) {
+        this.episodeRef = episodeRef;
+        this.videoId = undefined;
+        const { part, episode } = RefUtil.getPartFromEpisode(this.episodeRef);
+        this.dataService.lang = lang;
+        this.dataService.getPart(part).subscribe(result => {
+          if (result) {
+            this.episode = result.episodes.find(e => e.ref === episode);
+            if (this.episode) {
+              this.dataService.getPreviousEpisode(this.episodeRef, result).subscribe(episode => this.previousEpisode = episode);
+              this.dataService.getNextEpisode(this.episodeRef, result).subscribe(episode => this.nextEpisode = episode);
+              this.videoId = this.episode.video.yt;
+            }
           }
-        }
-      });
+        });
+      } else {
+        this.router.navigateByUrl('/home');
+      }
     });
+  }
+
+  buildUrl(ref: string): string {
+    return `/story/${this.dataService.lang}/episode/${ref}`;
   }
 }

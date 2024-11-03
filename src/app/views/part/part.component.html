@@ -24,7 +24,7 @@
 <div class="flex">
   @if (previousPart) {
     <div class="flex-1">
-      <a [routerLink]="'/story/part/'+previousPart.ref">
+      <a pButton [routerLink]="buildUrl(previousPart.ref)">
         {{"previous" | translate}}: {{previousPart.ref}}
       </a>
     </div>
@@ -32,7 +32,7 @@
 
   @if (nextPart) {
     <div class="flex-1 text-right">
-      <a [routerLink]="'/story/part/'+nextPart.ref">
+      <a pButton [routerLink]="buildUrl(nextPart.ref)">
         {{"next" | translate}}: {{nextPart.ref}}
       </a>
     </div>
