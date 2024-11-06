@@ -5,6 +5,7 @@ import { Episode } from './shared/interfaces/episode';
 import { ResultEpisode } from './shared/interfaces/result-episode';
 import { ResultPart } from './shared/interfaces/result-part';
 import { Season } from './shared/interfaces/season';
+import { StoryEvent } from './shared/interfaces/story-event';
 import { RefUtil } from './shared/utils/ref.utils';
 
 @Injectable({
@@ -13,6 +14,8 @@ import { RefUtil } from './shared/utils/ref.utils';
 export class DataService {
 
   seasons: Season[] = [];
+
+  storyEvents: StoryEvent[] = [];
 
   private _lang = 'en';
 
@@ -29,6 +32,15 @@ export class DataService {
   getSeasons(): Observable<Season[]> {
     return this.http.get<Season[]>(`${this.lang}/seasons.json`)
       .pipe(map(seasons => this.seasons = seasons));
+  }
+
+  getStoryEvents(): Observable<StoryEvent[]> {
+    return this.http.get<StoryEvent[]>(`${this.lang}/se.json`)
+      .pipe(map(storyEvents => this.storyEvents = storyEvents));
+  }
+
+  getStoryEvent(seRef: string): Observable<Episode[]> {
+    return this.http.get<Episode[]>(`${this.lang}/se/${seRef}.json`);
   }
 
   getPart(partRef: string): Observable<ResultPart | undefined> {

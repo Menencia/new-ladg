@@ -22,4 +22,26 @@
       </p-table>
     </div>
   }
+
+  @if (storyEvents.length > 0) {
+    <div class="flex-auto">
+
+      <h2>{{'story.storyEvents' | translate}}</h2>
+
+      <p-table [value]="storyEvents" styleClass="inline-flex p-datatable-sm">
+        <ng-template pTemplate="body" let-storyEvent>
+          <tr>
+            <td>
+              @for (s of storyEvents; track $index) {
+                <a [routerLink]="buildStoryEventPath(s.ref)"
+                  class="inline-flex items-center px-2 py-1 mr-2 text-gray-600 rounded-md bg-gray-50 ring-1 ring-inset ring-gray-500/10">
+                  {{ s.ref }} {{ s.title }}
+                </a>
+              }
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  }
 </div>

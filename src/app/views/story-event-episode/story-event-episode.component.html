@@ -1,0 +1,7 @@
+<h2>{{episode?.title}} ({{episode?.video?.duration}})</h2>
+
+<div class="mb-2">
+  @if (videoId) {
+    <youtube-player [width]="360" [height]="641" [videoId]="videoId"></youtube-player>
+  }
+</div>

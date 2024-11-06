@@ -7,6 +7,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { DataService } from '../../data.service';
 import { DisplaySeason } from '../../shared/interfaces/season';
+import { StoryEvent } from '../../shared/interfaces/story-event';
 import { LangUtils } from '../../shared/utils/lang.utils';
 import { OrderUtils } from '../../shared/utils/order.utils';
 
@@ -19,6 +20,7 @@ import { OrderUtils } from '../../shared/utils/order.utils';
 })
 export class StoryComponent {
   seasons: DisplaySeason[] = [];
+  storyEvents: StoryEvent[] = [];
 
   constructor(
     private dataService: DataService,
@@ -31,6 +33,7 @@ export class StoryComponent {
       const lang = params.get('lang');
       if (lang && LangUtils.isValidVideoLang(lang)) {
         this.getSeasons(lang);
+        this.getStoryEvents(lang);
       } else {
         this.router.navigateByUrl('/home');
       }
@@ -50,8 +53,19 @@ export class StoryComponent {
     });
   }
 
-  /** Builds url for part links */
+  /** Get all the SE data for given language */
+  private getStoryEvents(lang: string) {
+    this.dataService.lang = lang;
+    this.dataService.getStoryEvents().subscribe(storyEvents => this.storyEvents = storyEvents);
+  }
+
+  /** Builds url for season links */
   buildPath(seasonRef: string, partRef: string): string {
     return `/story/${this.dataService.lang}/part/${seasonRef}-${partRef}`;
+  }
+
+  /** Builds url for SE links */
+  buildStoryEventPath(ref: string): string {
+    return `/storyEvent/${this.dataService.lang}/${ref}`;
   }
 }
