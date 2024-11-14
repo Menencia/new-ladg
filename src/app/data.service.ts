@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, switchMap } from 'rxjs';
 import { Episode } from './shared/interfaces/episode';
+import { Part } from './shared/interfaces/part';
 import { ResultEpisode } from './shared/interfaces/result-episode';
 import { ResultPart } from './shared/interfaces/result-part';
 import { Season } from './shared/interfaces/season';
@@ -32,6 +33,19 @@ export class DataService {
   getSeasons(): Observable<Season[]> {
     return this.http.get<Season[]>(`${this.lang}/seasons.json`)
       .pipe(map(seasons => this.seasons = seasons));
+  }
+
+  getSeasonsPart(partRef: string): Observable<Part | undefined> {
+    const [seasonRef, ...rest] = partRef.split("-");
+    const onlyPartRef = rest.join('-');
+    return this.http.get<Season[]>(`${this.lang}/seasons.json`)
+      .pipe(map(seasons => {
+        const season = seasons.find(season => season.ref === seasonRef);
+        if (season) {
+          return season.parts.find(part => part.ref === onlyPartRef);
+        }
+        return undefined;
+      }));
   }
 
   getStoryEvents(): Observable<StoryEvent[]> {

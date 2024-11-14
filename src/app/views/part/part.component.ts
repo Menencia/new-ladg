@@ -6,6 +6,7 @@ import { TableModule } from 'primeng/table';
 import { DataService } from '../../data.service';
 import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
 import { Episode } from '../../shared/interfaces/episode';
+import { Part } from '../../shared/interfaces/part';
 import { ResultPart } from '../../shared/interfaces/result-part';
 
 @Component({
@@ -18,6 +19,7 @@ import { ResultPart } from '../../shared/interfaces/result-part';
 export class PartComponent {
   episodes: Episode[] = [];
   partRef = '';
+  part?: Part;
   previousPart?: ResultPart;
   nextPart?: ResultPart;
 
@@ -34,6 +36,7 @@ export class PartComponent {
       if (lang && partRef) {
         this.partRef = partRef;
         this.dataService.lang = lang;
+        this.dataService.getSeasonsPart(this.partRef).subscribe(part => this.part = part);
         this.dataService.getPart(this.partRef).subscribe(result => this.episodes = result?.episodes ?? []);
         this.dataService.getPreviousPart(this.partRef).subscribe(result => this.previousPart = result);
         this.dataService.getNextPart(this.partRef).subscribe(result => this.nextPart = result);
