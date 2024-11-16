@@ -4,13 +4,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DataService } from '../../../data.service';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-breadcrumb',
   standalone: true,
   imports: [RouterLink, TranslateModule],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  templateUrl: './breadcrumb.component.html',
+  styleUrl: './breadcrumb.component.scss'
 })
-export class NavbarComponent {
+export class BreadcrumbComponent {
   season = '';
   chapter = '';
   part = '';

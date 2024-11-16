@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { DataService } from '../../data.service';
-import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
+import { BreadcrumbComponent } from "../../shared/components/breadcrumb/breadcrumb.component";
 import { Episode } from '../../shared/interfaces/episode';
 import { Part } from '../../shared/interfaces/part';
 import { ResultPart } from '../../shared/interfaces/result-part';
@@ -12,7 +12,7 @@ import { ResultPart } from '../../shared/interfaces/result-part';
 @Component({
   selector: 'app-part',
   standalone: true,
-  imports: [RouterModule, TableModule, NavbarComponent, TranslateModule, ButtonModule],
+  imports: [RouterModule, TableModule, BreadcrumbComponent, TranslateModule, ButtonModule],
   templateUrl: './part.component.html',
   styleUrl: './part.component.scss'
 })

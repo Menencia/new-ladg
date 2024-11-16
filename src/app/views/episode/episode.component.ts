@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { YoutubePlayerComponent } from 'ngx-youtube-player';
 import { ButtonModule } from 'primeng/button';
 import { DataService } from '../../data.service';
-import { NavbarComponent } from "../../shared/components/navbar/navbar.component";
+import { BreadcrumbComponent } from "../../shared/components/breadcrumb/breadcrumb.component";
 import { Episode } from '../../shared/interfaces/episode';
 import { ResultEpisode } from '../../shared/interfaces/result-episode';
 import { RefUtil } from '../../shared/utils/ref.utils';
@@ -12,7 +12,7 @@ import { RefUtil } from '../../shared/utils/ref.utils';
 @Component({
   selector: 'app-part',
   standalone: true,
-  imports: [YoutubePlayerComponent, NavbarComponent, TranslateModule, RouterModule, ButtonModule],
+  imports: [YoutubePlayerComponent, BreadcrumbComponent, TranslateModule, RouterModule, ButtonModule],
   templateUrl: './episode.component.html',
   styleUrl: './episode.component.scss'
 })
