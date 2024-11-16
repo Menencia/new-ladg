@@ -7,7 +7,8 @@
   },
   "story": {
     "season": "Saison",
-    "parts": "Chapitres"
+    "parts": "Chapitres",
+    "storyEvents": "Histoires annexes"
   },
   "ref": "Réf",
   "title": "Titre",
