@@ -19,6 +19,6 @@ export class PartsListComponent {
 
   /** Builds url for season links */
   buildPath(seasonRef: string, partRef: string): string {
-    return `/story/${this.dataService.getInstantLang()}/part/${seasonRef}-${partRef}`;
+    return `/story/${this.dataService.getInstantLang()}/${seasonRef}-${partRef}`;
   }
 }

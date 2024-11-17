@@ -1,9 +1,16 @@
-<app-breadcrumb [ref]="partRef"></app-breadcrumb>
+<app-breadcrumb [ref]="ref" [scope]="scope" [type]="type"></app-breadcrumb>
 
-<h2>Chapitre {{partRef}}</h2>
+<h2>
+  @if (isStory()) {
+    Chapitre {{ref}}
+  }
+  @if (isStoryEvent()) {
+    {{ref}}. {{part?.title}}
+  }
+</h2>
 
 <div class="flex flex-col-reverse mb-2 xl:gap-10 xl:flex-row">
-  <app-episodes-list class="grow" [data]="episodes" [parentRef]="partRef"></app-episodes-list>
+  <app-episodes-list class="grow" [data]="episodes" [parentRef]="ref" [type]="type"></app-episodes-list>
 
   <div class="xl:grow-0">
     @if (part?.image) {

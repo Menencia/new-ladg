@@ -6,7 +6,6 @@ import { Part } from '../interfaces/part';
 import { ResultEpisode } from '../interfaces/result-episode';
 import { ResultPart } from '../interfaces/result-part';
 import { Season } from '../interfaces/season';
-import { StoryEvent } from '../interfaces/story-event';
 import { RefUtil } from '../utils/ref.utils';
 
 @Injectable({
@@ -16,7 +15,7 @@ export class DataService {
 
   seasons: Season[] = [];
 
-  storyEvents: StoryEvent[] = [];
+  storyEvents: Part[] = [];
 
   private _lang = new BehaviorSubject('en');
 
@@ -53,8 +52,8 @@ export class DataService {
       }));
   }
 
-  getStoryEvents(): Observable<StoryEvent[]> {
-    return this.http.get<StoryEvent[]>(`${this.getInstantLang()}/se.json`)
+  getStoryEvents(): Observable<Part[]> {
+    return this.http.get<Part[]>(`${this.getInstantLang()}/se.json`)
       .pipe(map(storyEvents => this.storyEvents = storyEvents));
   }
 

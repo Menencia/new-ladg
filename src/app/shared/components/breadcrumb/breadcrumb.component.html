@@ -1,16 +1,31 @@
 <ol class="p-2 my-2 bg-orange-200 dark:bg-gray-700">
-  <li class="inline"><a [routerLink]="getStoryUrl()">{{'navbar.story' | translate}}</a></li>
-
-  <li class="inline">{{'navbar.season' | translate}} {{season}}</li>
-
   <li class="inline">
-    {{'navbar.chapter' | translate}} {{chapter}}
-    @if (part) {
-      - {{'navbar.part' | translate}} {{part}}
-    }
+    <a [routerLink]="getStoryUrl()" class="font-bold hover:text-gray-300">{{'navbar.story' | translate}}</a>
   </li>
 
-  @if (episode) {
-    <li class="inline">{{'navbar.episode' | translate}} {{episode}}</li>
+  @if (scope === 'part' && type === 'story') {
+    <li class="inline">
+      {{'navbar.chapter' | translate}} {{ref}}
+    </li>
+  }
+
+  @if (scope === 'episode' && type === 'story') {
+    <li class="inline">
+      <a
+        [routerLink]="buildChapterUrl()"
+        class="font-bold hover:text-gray-300">
+          {{'navbar.chapter' | translate}} {{buildChapterLabel()}}
+      </a>
+    </li>
+
+    <li class="inline">
+      {{'navbar.episode' | translate}} {{ref}}
+    </li>
+  }
+
+  @if (scope === 'episode' && type === 'storyEvent') {
+    <li class="inline">
+      {{'navbar.storyEvent' | translate}} {{buildChapterLabel()}}
+    </li>
   }
 </ol>

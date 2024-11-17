@@ -6,8 +6,8 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { EventsListComponent } from '../../shared/components/list/events-list/events-list.component';
 import { PartsListComponent } from '../../shared/components/list/parts-list/parts-list.component';
+import { Part } from '../../shared/interfaces/part';
 import { DisplaySeason } from '../../shared/interfaces/season';
-import { StoryEvent } from '../../shared/interfaces/story-event';
 import { DataService } from '../../shared/services/data.service';
 import { LangUtils } from '../../shared/utils/lang.utils';
 import { OrderUtils } from '../../shared/utils/order.utils';
@@ -24,7 +24,7 @@ import { OrderUtils } from '../../shared/utils/order.utils';
 })
 export class StoryComponent {
   seasons: DisplaySeason[] = [];
-  storyEvents: StoryEvent[] = [];
+  storyEvents: Part[] = [];
 
   constructor(
     private dataService: DataService,

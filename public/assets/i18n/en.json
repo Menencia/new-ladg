@@ -32,6 +32,7 @@
     "story": "Story",
     "season": "Season",
     "chapter": "Chapter",
+    "storyEvent": "Story event",
     "part": "Part",
     "episode": "Episode"
   }

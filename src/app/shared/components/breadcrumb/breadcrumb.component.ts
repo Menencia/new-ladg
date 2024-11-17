@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { BreadcrumbScope, BreadcrumbType } from '../../enums/breadcrumb';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -11,28 +12,27 @@ import { DataService } from '../../services/data.service';
   styleUrl: './breadcrumb.component.scss'
 })
 export class BreadcrumbComponent {
-  season = '';
-  chapter = '';
-  part = '';
-  episode = '';
+  @Input() ref = '';
+
+  @Input() type = BreadcrumbType.STORY;
+
+  @Input() scope = BreadcrumbScope.PART;
 
   constructor(private dataService: DataService) {}
 
-  @Input()
-  set ref(val: string) {
-    const { S, C, P, E } = this.parseString(val);
-    this.season = S;
-    this.chapter = C;
-    this.part = P;
-    this.episode = E;
-  }
-
-  private parseString(input: string) {
-    const [S, C, P, E] = input.split('-');
-    return { S, C, P, E };
-  }
-
   getStoryUrl(): string {
     return `/story/${this.dataService.getInstantLang()}`
+  }
+
+  buildChapterUrl(): string {
+    if (this.type === BreadcrumbType.STORY) {
+      const chapterRef = this.ref.split('-').slice(0, -1).join('-');
+      return `/story/${this.dataService.getInstantLang()}/${chapterRef}`;
+    }
+    return '';
+  }
+
+  buildChapterLabel(): string {
+    return this.ref.split('-').slice(0, -1).join('-');
   }
 }
