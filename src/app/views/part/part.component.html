@@ -3,7 +3,7 @@
 <h2>Chapitre {{partRef}}</h2>
 
 <div class="flex flex-col-reverse mb-2 xl:gap-10 xl:flex-row">
-  <app-episodes-list class="grow" [data]="episodes" [partRef]="partRef"></app-episodes-list>
+  <app-episodes-list class="grow" [data]="episodes" [parentRef]="partRef"></app-episodes-list>
 
   <div class="xl:grow-0">
     @if (part?.image) {

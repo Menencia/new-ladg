@@ -4,6 +4,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TableModule } from 'primeng/table';
 import { DataService } from '../../../services/data.service';
 
+export enum EpisodeType {
+  CHAPTER = 'chapter',
+  STORY_EVENT = 'storyEvent'
+}
+
 @Component({
   selector: 'app-episodes-list',
   standalone: true,
@@ -14,11 +19,19 @@ import { DataService } from '../../../services/data.service';
 export class EpisodesListComponent {
   @Input() data: any;
 
-  @Input() partRef = '';
+  @Input() type = EpisodeType.CHAPTER;
+
+  @Input() parentRef = '';
 
   constructor(private dataService: DataService) {}
 
   buildPath(episodeRef: string): string {
-    return `/story/${this.dataService.getInstantLang()}/episode/${this.partRef}-${episodeRef}`;
+    if (this.type === EpisodeType.CHAPTER) {
+      return `/story/${this.dataService.getInstantLang()}/episode/${this.parentRef}-${episodeRef}`;
+    }
+    if (this.type === EpisodeType.STORY_EVENT) {
+      return `/storyEvent/${this.dataService.getInstantLang()}/episode/${this.parentRef}-${episodeRef}`;
+    }
+    return '';
   }
 }

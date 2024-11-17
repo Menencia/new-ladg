@@ -1,20 +1,7 @@
+<h2>{{seRef}}. {{storyEvent?.title}}</h2>
+
 <div class="flex gap-10 mb-2">
-  <p-table [value]="episodes" styleClass="p-datatable-sm">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>{{'ref' | translate}}</th>
-        <th>{{'title' | translate}}</th>
-        <th>{{'duration' | translate}}</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-episode>
-      <tr>
-        <td>{{ episode.ref }}</td>
-        <td><a [routerLink]="buildPath(episode.ref)">{{ episode.title }}</a> </td>
-        <td>{{ episode.video.duration }}</td>
-      </tr>
-    </ng-template>
-  </p-table>
+  <app-episodes-list [data]="episodes" [type]="type" [parentRef]="seRef"></app-episodes-list>
 
   <div></div>
 </div>
