@@ -3,14 +3,13 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { BreadcrumbComponent } from "../../shared/components/breadcrumb/breadcrumb.component";
 import { Episode } from '../../shared/interfaces/episode';
 import { DataService } from '../../shared/services/data.service';
 
 @Component({
   selector: 'app-story-event',
   standalone: true,
-  imports: [RouterModule, TableModule, BreadcrumbComponent, TranslateModule, ButtonModule],
+  imports: [RouterModule, TableModule, TranslateModule, ButtonModule],
   templateUrl: './story-event.component.html',
   styleUrl: './story-event.component.scss'
 })

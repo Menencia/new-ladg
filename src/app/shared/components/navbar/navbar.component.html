@@ -4,7 +4,14 @@
   </div>
   <div class="grow"></div>
   <div class="flex gap-4">
-    <a href="#" (click)="changeTheme()"><i class="pi pi-moon"></i></a>
+    <a href="javascript:void();" (click)="toggleDark()">
+      @if (isLighTheme()) {
+      <i class="pi pi-moon"></i>
+      }
+      @else {
+        <i class="pi pi-sun"></i>
+      }
+    </a>
     <a href="#" routerLink="/settings"><i class="pi pi-cog"></i></a>
   </div>
 </div>

@@ -1,9 +1,9 @@
-<ol class="breadcrump">
-  <li><a [routerLink]="getStoryUrl()">{{'navbar.story' | translate}}</a></li>
+<ol class="p-2 m-2 bg-orange-200 dark:bg-gray-700">
+  <li class="inline"><a [routerLink]="getStoryUrl()">{{'navbar.story' | translate}}</a></li>
 
-  <li>{{'navbar.season' | translate}} {{season}}</li>
+  <li class="inline">{{'navbar.season' | translate}} {{season}}</li>
 
-  <li>
+  <li class="inline">
     {{'navbar.chapter' | translate}} {{chapter}}
     @if (part) {
       - {{'navbar.part' | translate}} {{part}}
@@ -11,6 +11,6 @@
   </li>
 
   @if (episode) {
-    <li>{{'navbar.episode' | translate}} {{episode}}</li>
+    <li class="inline">{{'navbar.episode' | translate}} {{episode}}</li>
   }
 </ol>

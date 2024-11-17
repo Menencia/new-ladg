@@ -3,7 +3,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { YoutubePlayerComponent } from 'ngx-youtube-player';
 import { ButtonModule } from 'primeng/button';
-import { BreadcrumbComponent } from "../../shared/components/breadcrumb/breadcrumb.component";
 import { Episode } from '../../shared/interfaces/episode';
 import { DataService } from '../../shared/services/data.service';
 import { RefUtil } from '../../shared/utils/ref.utils';
@@ -11,7 +10,7 @@ import { RefUtil } from '../../shared/utils/ref.utils';
 @Component({
   selector: 'app-part',
   standalone: true,
-  imports: [YoutubePlayerComponent, BreadcrumbComponent, TranslateModule, RouterModule, ButtonModule],
+  imports: [YoutubePlayerComponent, TranslateModule, RouterModule, ButtonModule],
   templateUrl: './story-event-episode.component.html',
   styleUrl: './story-event-episode.component.scss'
 })
