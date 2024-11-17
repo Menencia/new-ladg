@@ -24,10 +24,7 @@ export class AppComponent implements OnDestroy {
     private translateService: TranslateService,
     private dataService: DataService
   ) {
-    this.sub = this.dataService.getLang().subscribe(lang => {
-      console.log('new lang', lang)
-      this.lang = lang;
-    });
+    this.sub = this.dataService.getLang().subscribe(lang => this.lang = lang);
   }
 
   ngOnInit() {

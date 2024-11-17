@@ -1,0 +1,9 @@
+<div class="flex flex-col gap-1">
+  @for (storyEvent of data; track $index) {
+    <a
+      [routerLink]="buildStoryEventPath(storyEvent.ref)"
+      class="p-2 text-gray-600 bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-400 hover:dark:bg-slate-500">
+      {{ storyEvent.ref }}. {{ storyEvent.title }}
+    </a>
+  }
+</div>

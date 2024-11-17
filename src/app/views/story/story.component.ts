@@ -4,7 +4,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
-import { TableModule } from 'primeng/table';
+import { EventsListComponent } from '../../shared/components/list/events-list/events-list.component';
+import { PartsListComponent } from '../../shared/components/list/parts-list/parts-list.component';
 import { DisplaySeason } from '../../shared/interfaces/season';
 import { StoryEvent } from '../../shared/interfaces/story-event';
 import { DataService } from '../../shared/services/data.service';
@@ -14,7 +15,10 @@ import { OrderUtils } from '../../shared/utils/order.utils';
 @Component({
   selector: 'app-story',
   standalone: true,
-  imports: [RouterModule, TableModule, TranslateModule, DropdownModule, FormsModule, ButtonModule],
+  imports: [
+    RouterModule, PartsListComponent, EventsListComponent,
+    TranslateModule, DropdownModule, FormsModule, ButtonModule
+  ],
   templateUrl: './story.component.html',
   styleUrl: './story.component.scss'
 })
@@ -57,15 +61,5 @@ export class StoryComponent {
   private getStoryEvents(lang: string) {
     this.dataService.setLang(lang);
     this.dataService.getStoryEvents().subscribe(storyEvents => this.storyEvents = storyEvents);
-  }
-
-  /** Builds url for season links */
-  buildPath(seasonRef: string, partRef: string): string {
-    return `/story/${this.dataService.getInstantLang()}/part/${seasonRef}-${partRef}`;
-  }
-
-  /** Builds url for SE links */
-  buildStoryEventPath(ref: string): string {
-    return `/storyEvent/${this.dataService.getInstantLang()}/${ref}`;
   }
 }

@@ -1,0 +1,13 @@
+<div class="flex flex-col gap-1">
+  @for (part of data; track $index) {
+    <div class="flex w-full gap-1">
+      @for (p of part; track $index) {
+        <a
+          [routerLink]="buildPath(seasonRef, p.ref)"
+          class="p-2 text-center text-gray-600 grow bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-400 hover:dark:bg-slate-500">
+          Chapter {{ p.ref }}
+        </a>
+      }
+    </div>
+  }
+</div>
