@@ -5,9 +5,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
-import { DataService } from '../../data.service';
 import { DisplaySeason } from '../../shared/interfaces/season';
 import { StoryEvent } from '../../shared/interfaces/story-event';
+import { DataService } from '../../shared/services/data.service';
 import { LangUtils } from '../../shared/utils/lang.utils';
 import { OrderUtils } from '../../shared/utils/order.utils';
 
@@ -42,7 +42,7 @@ export class StoryComponent {
 
   /** Get all the seasons data for given language */
   private getSeasons(lang: string) {
-    this.dataService.lang = lang;
+    this.dataService.setLang(lang);
     this.dataService.getSeasons().subscribe(seasons => {
       this.seasons = seasons.map(season => {
         return {
@@ -55,17 +55,17 @@ export class StoryComponent {
 
   /** Get all the SE data for given language */
   private getStoryEvents(lang: string) {
-    this.dataService.lang = lang;
+    this.dataService.setLang(lang);
     this.dataService.getStoryEvents().subscribe(storyEvents => this.storyEvents = storyEvents);
   }
 
   /** Builds url for season links */
   buildPath(seasonRef: string, partRef: string): string {
-    return `/story/${this.dataService.lang}/part/${seasonRef}-${partRef}`;
+    return `/story/${this.dataService.getInstantLang()}/part/${seasonRef}-${partRef}`;
   }
 
   /** Builds url for SE links */
   buildStoryEventPath(ref: string): string {
-    return `/storyEvent/${this.dataService.lang}/${ref}`;
+    return `/storyEvent/${this.dataService.getInstantLang()}/${ref}`;
   }
 }

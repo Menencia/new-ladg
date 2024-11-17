@@ -3,11 +3,11 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { DataService } from '../../data.service';
 import { BreadcrumbComponent } from "../../shared/components/breadcrumb/breadcrumb.component";
 import { Episode } from '../../shared/interfaces/episode';
 import { Part } from '../../shared/interfaces/part';
 import { ResultPart } from '../../shared/interfaces/result-part';
+import { DataService } from '../../shared/services/data.service';
 
 @Component({
   selector: 'app-part',
@@ -35,7 +35,7 @@ export class PartComponent {
       const partRef = params.get('ref');
       if (lang && partRef) {
         this.partRef = partRef;
-        this.dataService.lang = lang;
+        this.dataService.setLang(lang);
         this.dataService.getSeasonsPart(this.partRef).subscribe(part => this.part = part);
         this.dataService.getPart(this.partRef).subscribe(result => this.episodes = result?.episodes ?? []);
         this.dataService.getPreviousPart(this.partRef).subscribe(result => this.previousPart = result);
@@ -47,10 +47,10 @@ export class PartComponent {
   }
 
   buildPath(episodeRef: string): string {
-    return `/story/${this.dataService.lang}/episode/${this.partRef}-${episodeRef}`;
+    return `/story/${this.dataService.getInstantLang()}/episode/${this.partRef}-${episodeRef}`;
   }
 
   buildUrl(ref: string): string {
-    return `/story/${this.dataService.lang}/part/${ref}`;
+    return `/story/${this.dataService.getInstantLang()}/part/${ref}`;
   }
 }

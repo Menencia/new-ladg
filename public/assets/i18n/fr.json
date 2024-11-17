@@ -10,6 +10,14 @@
     "parts": "Chapitres",
     "storyEvents": "Histoires annexes"
   },
+  "settings": {
+    "uiLang": "Langue de l'interface",
+    "videoLang": "Langue des vidéos",
+    "langs": {
+      "en": "Anglais",
+      "fr": "Français"
+    }
+  },
   "ref": "Réf",
   "title": "Titre",
   "duration": "Durée",

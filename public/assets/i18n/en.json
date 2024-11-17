@@ -10,6 +10,14 @@
     "parts": "Chapters",
     "storyEvents": "Story events"
   },
+  "settings": {
+    "uiLang": "UI Lang",
+    "videoLang": "Video Lang",
+    "langs": {
+      "en": "English",
+      "fr": "French"
+    }
+  },
   "ref": "Ref",
   "title": "Title",
   "duration": "Duration",

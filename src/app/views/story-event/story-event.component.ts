@@ -3,9 +3,9 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { DataService } from '../../data.service';
 import { BreadcrumbComponent } from "../../shared/components/breadcrumb/breadcrumb.component";
 import { Episode } from '../../shared/interfaces/episode';
+import { DataService } from '../../shared/services/data.service';
 
 @Component({
   selector: 'app-story-event',
@@ -30,7 +30,7 @@ export class StoryEventComponent {
       const partRef = params.get('ref');
       if (lang && partRef) {
         this.seRef = partRef;
-        this.dataService.lang = lang;
+        this.dataService.setLang(lang);
         this.dataService.getStoryEvent(this.seRef).subscribe(episodes => this.episodes = episodes);
       } else {
         this.router.navigateByUrl('/home');
@@ -39,6 +39,6 @@ export class StoryEventComponent {
   }
 
   buildPath(episodeRef: string): string {
-    return `/storyEvent/${this.dataService.lang}/episode/${this.seRef}-${episodeRef}`;
+    return `/storyEvent/${this.dataService.getInstantLang()}/episode/${this.seRef}-${episodeRef}`;
   }
 }

@@ -7,7 +7,7 @@
 @import "tailwindcss/base.css" layer(tw-base);
 @import "primeng/resources/primeng.min.css";
 @import "primeng/resources/themes/tailwind-light/theme.css";
-// @import "primeicons/primeicons";
+@import "primeicons/primeicons";
 @import "tailwindcss/components.css" layer(tw-components);
 @import "tailwindcss/utilities.css" layer(tw-utilities);
 
@@ -16,7 +16,6 @@ body {
   background-image: url(/images/main-bg.jpg);
   background-position: top center;
   background-repeat: no-repeat;
-  padding: 30px 0 0;
   color: #1F3656;
   font-size: 16px;
 }

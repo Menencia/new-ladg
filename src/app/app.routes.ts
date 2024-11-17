@@ -27,6 +27,11 @@ export const routes: Routes = [
       .then(m => m.StoryEventEpisodeComponent)
   },
   {
+    path: 'settings',
+    loadComponent: () => import('./views/settings/settings.component')
+      .then(m => m.SettingsComponent)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

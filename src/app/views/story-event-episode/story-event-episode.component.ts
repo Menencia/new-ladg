@@ -3,9 +3,9 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { YoutubePlayerComponent } from 'ngx-youtube-player';
 import { ButtonModule } from 'primeng/button';
-import { DataService } from '../../data.service';
 import { BreadcrumbComponent } from "../../shared/components/breadcrumb/breadcrumb.component";
 import { Episode } from '../../shared/interfaces/episode';
+import { DataService } from '../../shared/services/data.service';
 import { RefUtil } from '../../shared/utils/ref.utils';
 
 @Component({
@@ -34,7 +34,7 @@ export class StoryEventEpisodeComponent {
         this.episodeRef = episodeRef;
         this.videoId = undefined;
         const { se, episode } = RefUtil.getPartFromStoryEventEpisode(this.episodeRef);
-        this.dataService.lang = lang;
+        this.dataService.setLang(lang);
         this.dataService.getStoryEvent(se).subscribe(episodes => {
           this.episode = episodes.find(e => e.ref === episode);
           if (this.episode) {
@@ -48,6 +48,6 @@ export class StoryEventEpisodeComponent {
   }
 
   buildUrl(ref: string): string {
-    return `/story/${this.dataService.lang}/episode/${ref}`;
+    return `/story/${this.dataService.getInstantLang()}/episode/${ref}`;
   }
 }
