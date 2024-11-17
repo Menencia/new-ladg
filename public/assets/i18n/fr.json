@@ -11,6 +11,7 @@
     "storyEvents": "Histoires annexes"
   },
   "settings": {
+    "title": "Options",
     "uiLang": "Langue de l'interface",
     "videoLang": "Langue des vidéos",
     "langs": {

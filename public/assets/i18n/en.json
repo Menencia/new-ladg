@@ -11,6 +11,7 @@
     "storyEvents": "Story events"
   },
   "settings": {
+    "title": "Settings",
     "uiLang": "UI Lang",
     "videoLang": "Video Lang",
     "langs": {

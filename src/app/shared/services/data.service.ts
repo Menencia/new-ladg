@@ -22,7 +22,6 @@ export class DataService {
   constructor(public http: HttpClient) { }
 
   setLang(val: string) {
-    console.log('next', val)
     this._lang.next(val);
   }
 
