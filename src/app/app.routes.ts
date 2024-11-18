@@ -17,15 +17,6 @@ export const routes: Routes = [
     path: ':type/:lang/episode/:ref',
     loadComponent: () => import('./views/episode/episode.component').then(m => m.EpisodeComponent)
   },
-  // {
-  //   path: 'storyEvent/:lang/:ref',
-  //   loadComponent: () => import('./views/story-event/story-event.component').then(m => m.StoryEventComponent)
-  // },
-  // {
-  //   path: 'storyEvent/:lang/episode/:ref',
-  //   loadComponent: () => import('./views/story-event-episode/story-event-episode.component')
-  //     .then(m => m.StoryEventEpisodeComponent)
-  // },
   {
     path: 'settings',
     loadComponent: () => import('./views/settings/settings.component')
