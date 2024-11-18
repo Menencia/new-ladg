@@ -1,6 +1,6 @@
 @if (lang === 'en') {
   <div>
-    <p>Welcome to The Grandshelt Archives</p>
+    <h2>Welcome to The Grandshelt Archives</h2>
     <p>This website's purpose is to preserve the mobile game Final Fantasy Brave Exvius
       after its End of Service took place on the 30th october 2024. All story mode cutscenes,
       earlier story events, summaries and more can be found here. Everything was made by a
@@ -10,12 +10,12 @@
       was based on both the Room of Recollection (FFBE replay mode) and FFBE Ultimania (only
       available in Japan).</p>
     <p>We hope you have a nice trip… As Knights of Grandshelt !</p>
-    <p>The Grandshelt Archives Team</p>
+    <p class="text-right">The Grandshelt Archives Team</p>
   </div>
 }
 
 @if (lang === 'fr') {
-  <p>Bienvenue dans les Archives de Grandshelt.</p>
+  <h2>Bienvenue dans les Archives de Grandshelt.</h2>
   <p>Ce site est consacré à la préservation du jeu mobile Final Fantasy Brave Exvius, dont les
     serveurs ont définitivement fermé le 30/10/2024. Toutes les scènes du mode histoire, certains
     événements d'histoire, des résumés et plus encore sont consultables ici. Tout a été mis en
@@ -30,7 +30,7 @@
   <p class="text-right">L'équipe des Archives de Grandshelt</p>
 }
 
-<div>{{'home.desc' | translate}}</div>
+<div class="mt-4">{{'home.desc' | translate}}</div>
 
 <ul class="flex gap-2">
   <li><a pButton pRipple [routerLink]="'/story/en'">{{'home.story-en' | translate}}</a></li>
