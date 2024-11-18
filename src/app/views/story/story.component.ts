@@ -25,6 +25,7 @@ import { OrderUtils } from '../../shared/utils/order.utils';
 export class StoryComponent {
   seasons: DisplaySeason[] = [];
   storyEvents: Part[] = [];
+  specialEvents: Part[] = [];
 
   constructor(
     private dataService: DataService,
@@ -38,6 +39,7 @@ export class StoryComponent {
       if (lang && LangUtils.isValidVideoLang(lang)) {
         this.getSeasons(lang);
         this.getStoryEvents(lang);
+        this.getSpecialEvents(lang);
       } else {
         this.router.navigateByUrl('/home');
       }
@@ -61,5 +63,11 @@ export class StoryComponent {
   private getStoryEvents(lang: string) {
     this.dataService.setLang(lang);
     this.dataService.getStoryEvents().subscribe(storyEvents => this.storyEvents = storyEvents);
+  }
+
+  /** Get all the SSE data for given language */
+  private getSpecialEvents(lang: string) {
+    this.dataService.setLang(lang);
+    this.dataService.getSpecialEvents().subscribe(specialEvents => this.specialEvents = specialEvents);
   }
 }

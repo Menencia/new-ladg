@@ -28,6 +28,9 @@ export class EpisodesListComponent {
     if (this.type === BreadcrumbType.STORY_EVENT) {
       return `/storyEvent/${this.dataService.getInstantLang()}/episode/${this.parentRef}-${episodeRef}`;
     }
+    if (this.type === BreadcrumbType.SPECIAL_EVENT) {
+      return `/specialEvent/${this.dataService.getInstantLang()}/episode/${this.parentRef}-${episodeRef}`;
+    }
     return '';
   }
 }

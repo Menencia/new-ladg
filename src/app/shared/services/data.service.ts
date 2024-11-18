@@ -17,6 +17,8 @@ export class DataService {
 
   storyEvents: Part[] = [];
 
+  specialEvents: Part[] = [];
+
   private _lang = new BehaviorSubject('en');
 
   constructor(public http: HttpClient) { }
@@ -58,6 +60,15 @@ export class DataService {
 
   getStoryEvent(seRef: string): Observable<Episode[]> {
     return this.http.get<Episode[]>(`${this.getInstantLang()}/se/${seRef}.json`);
+  }
+
+  getSpecialEvents(): Observable<Part[]> {
+    return this.http.get<Part[]>(`${this.getInstantLang()}/sse.json`)
+      .pipe(map(specialEvents => this.specialEvents = specialEvents));
+  }
+
+  getSpecialEvent(sseRef: string): Observable<Episode[]> {
+    return this.http.get<Episode[]>(`${this.getInstantLang()}/sse/${sseRef}.json`);
   }
 
   getPart(partRef: string): Observable<ResultPart | undefined> {

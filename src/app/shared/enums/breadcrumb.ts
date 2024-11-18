@@ -5,5 +5,6 @@ export enum BreadcrumbScope {
 
 export enum BreadcrumbType {
   STORY = 'story',
-  STORY_EVENT = 'storyEvent'
+  STORY_EVENT = 'storyEvent',
+  SPECIAL_EVENT = 'specialEvent'
 }

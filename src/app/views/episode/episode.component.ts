@@ -67,6 +67,16 @@ export class EpisodeComponent {
             }
           });
         }
+
+        if (this.type === BreadcrumbType.SPECIAL_EVENT) {
+          const { se, episode } = RefUtil.getPartFromStoryEventEpisode(this.episodeRef);
+          this.dataService.getSpecialEvent(se).subscribe(episodes => {
+            this.episode = episodes.find(e => e.ref === episode);
+            if (this.episode) {
+              this.videoId = this.episode.video.yt;
+            }
+          });
+        }
       } else {
         this.router.navigateByUrl('/home');
       }

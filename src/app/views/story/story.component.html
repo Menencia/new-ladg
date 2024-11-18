@@ -16,4 +16,13 @@
       <app-events-list [data]="storyEvents"></app-events-list>
     </div>
   }
+
+  @if (specialEvents.length > 0) {
+    <div class="flex-auto">
+
+      <h2>{{'story.specialEvents' | translate}}</h2>
+
+      <app-events-list [data]="specialEvents" [enableSpecial]="true"></app-events-list>
+    </div>
+  }
 </div>

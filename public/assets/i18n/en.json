@@ -8,7 +8,8 @@
   "story": {
     "season": "Season",
     "parts": "Chapters",
-    "storyEvents": "Story events"
+    "storyEvents": "Story events",
+    "specialEvents": "Special story events"
   },
   "settings": {
     "title": "Settings",

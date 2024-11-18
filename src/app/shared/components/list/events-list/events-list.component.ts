@@ -13,11 +13,13 @@ import { DataService } from '../../../services/data.service';
 })
 export class EventsListComponent {
   @Input() data: any;
+  @Input() enableSpecial = false;
 
   constructor(private dataService: DataService) {}
 
   /** Builds url for SE links */
   buildStoryEventPath(ref: string): string {
-    return `/storyEvent/${this.dataService.getInstantLang()}/${ref}`;
+    const type = !this.enableSpecial ? 'storyEvent' : 'specialEvent';
+    return `/${type}/${this.dataService.getInstantLang()}/${ref}`;
   }
 }

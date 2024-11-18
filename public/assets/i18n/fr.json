@@ -8,7 +8,8 @@
   "story": {
     "season": "Saison",
     "parts": "Chapitres",
-    "storyEvents": "Histoires annexes"
+    "storyEvents": "Histoires annexes",
+    "specialEvents": "Histoires spéciales"
   },
   "settings": {
     "title": "Options",

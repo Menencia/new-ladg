@@ -4,7 +4,7 @@
   @if (isStory()) {
     Chapitre {{ref}}
   }
-  @if (isStoryEvent()) {
+  @if (isStoryEvent() || isSpecialEvent()) {
     {{ref}}. {{part?.title}}
   }
 </h2>

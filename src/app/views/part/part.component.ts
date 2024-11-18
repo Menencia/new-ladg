@@ -58,6 +58,13 @@ export class PartComponent {
           this.dataService.getStoryEvents().subscribe(events => this.part = events.find(event => event.ref === this.ref));
           this.dataService.getStoryEvent(this.ref).subscribe(episodes => this.episodes = episodes);
         }
+        if (type === BreadcrumbType.SPECIAL_EVENT) {
+          this.dataService.getSpecialEvents().subscribe(events => {
+            console.log('ok', this.ref, events.find(event => event.ref === this.ref))
+            this.part = events.find(event => event.ref === this.ref);
+          });
+          this.dataService.getSpecialEvent(this.ref).subscribe(episodes => this.episodes = episodes);
+        }
       } else {
         this.router.navigateByUrl('/home');
       }
@@ -70,6 +77,10 @@ export class PartComponent {
 
   isStoryEvent(): boolean {
     return this.type === BreadcrumbType.STORY_EVENT;
+  }
+
+  isSpecialEvent(): boolean {
+    return this.type === BreadcrumbType.SPECIAL_EVENT;
   }
 
   buildUrl(ref: string): string {

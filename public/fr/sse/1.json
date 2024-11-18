@@ -1,0 +1,58 @@
+[
+  {
+    "ref": "1",
+    "title": "Histoire 1",
+    "video": {
+      "duration": "1:47",
+      "yt": "XGXKod7uRTI"
+    }
+  },
+  {
+    "ref": "2",
+    "title": "Histoire 2",
+    "video": {
+      "duration": "3:03",
+      "yt": "arf6v_D7hEM"
+    }
+  },
+  {
+    "ref": "3",
+    "title": "Histoire 3",
+    "video": {
+      "duration": "2:03",
+      "yt": "ARD67I4EfKk"
+    }
+  },
+  {
+    "ref": "4",
+    "title": "Histoire 4",
+    "video": {
+      "duration": "2:07",
+      "yt": "G8xQbiPvzXw"
+    }
+  },
+  {
+    "ref": "5",
+    "title": "Histoire 5",
+    "video": {
+      "duration": "2:46",
+      "yt": "O2AiQm0XCAE"
+    }
+  },
+  {
+    "ref": "6",
+    "title": "Histoire 6",
+    "video": {
+      "duration": "2:43",
+      "yt": "TRySLCFREdU"
+    }
+  },
+  {
+    "ref": "7",
+    "title": "Histoire 7",
+    "video": {
+      "duration": "1:41",
+      "yt": "YNrUv-22A5I"
+    }
+  }
+]
