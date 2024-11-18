@@ -20,7 +20,7 @@ export class LangActiveDirective {
   private updateClass(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        if (event.url.includes(`/${this.checkLang}/`)) {
+        if (event.url.includes(`/${this.checkLang}`)) {
           this.renderer.addClass(this.el.nativeElement, this.classToApply);
         } else {
           this.renderer.removeClass(this.el.nativeElement, this.classToApply);
