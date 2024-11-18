@@ -2,9 +2,9 @@
   <div class="logo">
     <ul class="flex gap-8">
       <li class="font-bold text-orange-700">LADG</li>
-      <li><a [routerLink]="'/home'" class="text-xs uppercase">Home</a></li>
-      <li><a [routerLink]="'/story/en'" class="text-xs uppercase" [class.text-orange-700]="isEN()">Story EN</a></li>
-      <li><a [routerLink]="'/story/fr'" class="text-xs uppercase" [class.text-orange-700]="isFR()">Story FR</a></li>
+      <li><a [routerLink]="'/home'" [routerLinkActive]="'text-orange-700'" class="text-xs uppercase">Home</a></li>
+      <li><a [routerLink]="'/story/en'" class="text-xs uppercase" appLangActive checkLang="en" classToApply="text-orange-700">Story EN</a></li>
+      <li><a [routerLink]="'/story/fr'" class="text-xs uppercase" appLangActive checkLang="fr" classToApply="text-orange-700">Story FR</a></li>
     </ul>
   </div>
   <div class="grow"></div>
