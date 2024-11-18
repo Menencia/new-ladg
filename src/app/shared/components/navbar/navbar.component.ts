@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { DataService } from '../../services/data.service';
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
@@ -12,8 +13,19 @@ import { ThemeService } from '../../services/theme.service';
 export class NavbarComponent {
   theme: string;
 
-  constructor(private themeService: ThemeService) {
+  constructor(
+    private dataService: DataService,
+    private themeService: ThemeService
+  ) {
     this.theme = this.themeService.theme;
+  }
+
+  isEN(): boolean {
+    return this.dataService.getInstantLang() === 'en';
+  }
+
+  isFR(): boolean {
+    return this.dataService.getInstantLang() === 'fr';
   }
 
   isLighTheme(): boolean {

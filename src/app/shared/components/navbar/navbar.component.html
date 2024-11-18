@@ -1,6 +1,11 @@
 <div class="flex items-center h-8 px-4 text-white bg-gray-800 space-around">
   <div class="logo">
-    LADG
+    <ul class="flex gap-8">
+      <li class="font-bold text-orange-700">LADG</li>
+      <li><a [routerLink]="'/home'" class="text-xs uppercase">Home</a></li>
+      <li><a [routerLink]="'/story/en'" class="text-xs uppercase" [class.text-orange-700]="isEN()">Story EN</a></li>
+      <li><a [routerLink]="'/story/fr'" class="text-xs uppercase" [class.text-orange-700]="isFR()">Story FR</a></li>
+    </ul>
   </div>
   <div class="grow"></div>
   <div class="flex gap-4">
