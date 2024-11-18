@@ -1,6 +1,6 @@
 <div class="flex items-center h-8 px-4 text-white bg-gray-800 space-around">
   <div class="logo">
-    <ul class="flex gap-8">
+    <ul class="flex items-center gap-8">
       <li class="font-bold text-orange-700">LADG</li>
       <li><a [routerLink]="'/home'" [routerLinkActive]="'text-orange-700'" class="text-xs uppercase">Home</a></li>
       <li><a [routerLink]="'/story/en'" class="text-xs uppercase" appLangActive checkLang="en" classToApply="text-orange-700">Story EN</a></li>
@@ -8,15 +8,16 @@
     </ul>
   </div>
   <div class="grow"></div>
-  <div class="flex gap-4">
+  <div class="flex items-center gap-4">
     <a href="javascript:void();" (click)="toggleDark()">
       @if (isLighTheme()) {
-      <i class="pi pi-moon"></i>
+      <i class="pi pi-sun"></i>
       }
       @else {
-        <i class="pi pi-sun"></i>
+        <i class="pi pi-moon"></i>
       }
     </a>
-    <a href="#" [routerLink]="'/settings'"><i class="pi pi-cog"></i></a>
+    <a href="javascript:void();" (click)="changeLang('en')" class="text-xs uppercase" appUiLangActive checkLang="en" classToApply="text-orange-700">EN</a>
+    <a href="javascript:void();" (click)="changeLang('fr')" class="text-xs uppercase" appUiLangActive checkLang="fr" classToApply="text-orange-700">FR</a>
   </div>
 </div>

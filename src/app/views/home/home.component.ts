@@ -11,9 +11,12 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  lang: string;
+  lang = 'en';
 
-  constructor(private translateSerice: TranslateService) {
-    this.lang = this.translateSerice.currentLang;
+  constructor(private translateService: TranslateService) {
+    this.lang = this.translateService.currentLang;
+    this.translateService.onLangChange.subscribe((changeLang) => {
+      this.lang = changeLang.lang;
+    })
   }
 }
