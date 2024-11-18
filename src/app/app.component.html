@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="container mx-auto">
-  <header class="banner"></header>
+  <header class="bg-bottom banner lg:bg-center"></header>
   <div class="p-8 bg-orange-100 dark:bg-gray-800 dark:text-gray-400">
     <router-outlet />
   </div>
@@ -9,10 +9,10 @@
 
 <footer>
   <div class="container mx-auto">
-    <div class="row">
-      <div class="col-6">
-        <div class="title">{{"main-title" | translate}}</div>
-      </div>
+    <div class="flex">
+      <div class="title">{{"main-title" | translate}}</div>
+      <div class="grow"></div>
+      <div class="text-sm text-gray-400">Images: Artworks officiels du jeu</div>
     </div>
   </div>
 </footer>
