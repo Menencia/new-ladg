@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DropdownModule } from 'primeng/dropdown';
 import { DataService } from '../../shared/services/data.service';
+import { LangUtils } from '../../shared/utils/lang.utils';
 
 @Component({
   selector: 'app-settings',
@@ -35,7 +36,7 @@ export class SettingsComponent {
   }
 
   onUiLang(event: { value: string }) {
-    this.translateService.use(event.value);
+    this.translateService.use(LangUtils.determineLang(event.value));
   }
 
   onVideoLang(event: { value: string }) {

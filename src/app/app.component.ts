@@ -28,8 +28,9 @@ export class AppComponent implements OnDestroy {
   }
 
   ngOnInit() {
+    const savedLang = localStorage.getItem('lang');
     this.translateService.use(LangUtils.determineLang(
-      localStorage.getItem('lang'),
+      savedLang,
       this.translateService.getBrowserLang()
     ));
   }
