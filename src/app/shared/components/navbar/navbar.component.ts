@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LangActiveDirective } from '../../directives/lang-active.directive';
 import { UiLangActiveDirective } from '../../directives/ui-lang-active.directive';
 import { ThemeService } from '../../services/theme.service';
@@ -9,7 +9,7 @@ import { LangUtils } from '../../utils/lang.utils';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, LangActiveDirective, UiLangActiveDirective],
+  imports: [RouterLink, RouterLinkActive, LangActiveDirective, UiLangActiveDirective, TranslateModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })

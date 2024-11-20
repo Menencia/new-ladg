@@ -1,5 +1,10 @@
 {
   "main-title": "Grandshelt Archives",
+  "navbar": {
+    "home": "Home",
+    "storyEnglish": "Story (en)",
+    "storyFrench": "Story (fr)"
+  },
   "home": {
     "desc": "Currently, two languages are available:",
     "story-en": "English",
@@ -33,12 +38,11 @@
     "ui-lang": "Interface language",
     "switch": "switch"
   },
-  "navbar": {
+  "breadcrumb": {
     "story": "Story",
-    "season": "Season",
     "chapter": "Chapter",
     "storyEvent": "Story event",
-    "part": "Part",
+    "specialEvent": "Special story event",
     "episode": "Episode"
   }
 }

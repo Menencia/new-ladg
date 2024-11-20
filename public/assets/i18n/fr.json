@@ -1,5 +1,10 @@
 {
   "main-title": "Les Archives de Grandshelt",
+  "navbar": {
+    "home": "Présentation",
+    "storyEnglish": "Histoire (en)",
+    "storyFrench": "Histoire (fr)"
+  },
   "home": {
     "desc": "Actuellement, deux langues sont disponibles :",
     "story-en": "Anglais",
@@ -33,12 +38,11 @@
     "ui-lang": "Langue de l'interface",
     "switch": "changer"
   },
-  "navbar": {
+  "breadcrumb": {
     "story": "Histoire",
-    "season": "Saison",
     "chapter": "Chapitre",
     "storyEvent": "Histoire annexe",
-    "part": "Partie",
+    "specialEvent": "Histoire spéciale",
     "episode": "Épisode"
   }
 }
