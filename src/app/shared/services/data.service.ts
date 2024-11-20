@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, catchError, map, Observable, of, switchMap } from 'rxjs';
 import { Episode } from '../interfaces/episode';
 import { Part } from '../interfaces/part';
@@ -21,7 +22,10 @@ export class DataService {
 
   private _lang = new BehaviorSubject('en');
 
-  constructor(public http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private translateService: TranslateService
+  ) {}
 
   setLang(val: string) {
     this._lang.next(val);
@@ -164,5 +168,12 @@ export class DataService {
         })
       )
     }
+  }
+
+  getSummary(partRef: string) {
+    const lang = this.translateService.currentLang;
+    const [season, ...rest] = partRef.split("-");
+    const part = rest.join("-");
+    return this.http.get(`${lang}/parts/season${season}/${part}-summary.html`, { responseType: 'text' });
   }
 }

@@ -11,6 +11,9 @@
     "storyEvents": "Story events",
     "specialEvents": "Special story events"
   },
+  "part": {
+    "summary": "Summary"
+  },
   "settings": {
     "title": "Settings",
     "uiLang": "UI Lang",

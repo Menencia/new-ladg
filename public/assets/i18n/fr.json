@@ -11,6 +11,9 @@
     "storyEvents": "Histoires annexes",
     "specialEvents": "Histoires spéciales"
   },
+  "part": {
+    "summary": "Résumé"
+  },
   "settings": {
     "title": "Options",
     "uiLang": "Langue de l'interface",

@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
-import { BreadcrumbComponent } from "../../shared/components/breadcrumb/breadcrumb.component";
+import { firstValueFrom } from 'rxjs';
+import { BreadcrumbComponent } from '../../shared/components/breadcrumb/breadcrumb.component';
 import { EpisodesListComponent } from '../../shared/components/list/episodes-list/episodes-list.component';
 import { BreadcrumbScope, BreadcrumbType } from '../../shared/enums/breadcrumb';
 import { Episode } from '../../shared/interfaces/episode';
 import { Part } from '../../shared/interfaces/part';
 import { ResultPart } from '../../shared/interfaces/result-part';
 import { DataService } from '../../shared/services/data.service';
+import { SummaryUtils } from '../../shared/utils/summary.utils';
 
 @Component({
   selector: 'app-part',
@@ -20,6 +23,8 @@ import { DataService } from '../../shared/services/data.service';
 export class PartComponent {
   /** list of episodes to display */
   episodes: Episode[] = [];
+  /** summary of the part to display */
+  summary: SafeHtml = '';
   /** ref of part */
   ref = '';
   /** type of part */
@@ -35,6 +40,7 @@ export class PartComponent {
 
   constructor(
     private dataService: DataService,
+    private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -49,26 +55,42 @@ export class PartComponent {
         this.ref = ref;
         this.dataService.setLang(lang);
         if (type === BreadcrumbType.STORY) {
-          this.dataService.getSeasonsPart(this.ref).subscribe(part => this.part = part);
-          this.dataService.getPart(this.ref).subscribe(result => this.episodes = result?.episodes ?? []);
-          this.dataService.getPreviousPart(this.ref).subscribe(result => this.previousPart = result);
-          this.dataService.getNextPart(this.ref).subscribe(result => this.nextPart = result);
+          this.loadStory();
         }
         if (type === BreadcrumbType.STORY_EVENT) {
-          this.dataService.getStoryEvents().subscribe(events => this.part = events.find(event => event.ref === this.ref));
-          this.dataService.getStoryEvent(this.ref).subscribe(episodes => this.episodes = episodes);
+          this.loadStoryEvent();
         }
         if (type === BreadcrumbType.SPECIAL_EVENT) {
-          this.dataService.getSpecialEvents().subscribe(events => {
-            console.log('ok', this.ref, events.find(event => event.ref === this.ref))
-            this.part = events.find(event => event.ref === this.ref);
-          });
-          this.dataService.getSpecialEvent(this.ref).subscribe(episodes => this.episodes = episodes);
+          this.loadSpecialEvent();
         }
       } else {
         this.router.navigateByUrl('/home');
       }
     });
+  }
+
+  private async loadStory(): Promise<void> {
+    this.part = await firstValueFrom(this.dataService.getSeasonsPart(this.ref));
+    const resultPart = await firstValueFrom(this.dataService.getPart(this.ref));
+    this.episodes = resultPart?.episodes ?? [];
+    this.previousPart = await firstValueFrom(this.dataService.getPreviousPart(this.ref));
+    this.nextPart = await firstValueFrom(this.dataService.getNextPart(this.ref));
+    if (this.part?.summary) {
+      const summary = await firstValueFrom(this.dataService.getSummary(this.ref));
+      this.summary = this.sanitizer.bypassSecurityTrustHtml(SummaryUtils.postProcess(summary));
+    }
+  }
+
+  private async loadStoryEvent(): Promise<void> {
+    const events = await firstValueFrom(this.dataService.getStoryEvents());
+    this.part = events.find(event => event.ref === this.ref);
+    this.episodes = await firstValueFrom(this.dataService.getStoryEvent(this.ref));
+  }
+
+  private async loadSpecialEvent(): Promise<void> {
+    const events = await firstValueFrom(this.dataService.getSpecialEvents());
+    this.part = events.find(event => event.ref === this.ref);
+    this.episodes = await firstValueFrom(this.dataService.getSpecialEvent(this.ref));
   }
 
   isStory(): boolean {
@@ -85,5 +107,11 @@ export class PartComponent {
 
   buildUrl(ref: string): string {
     return `/chapter/${this.dataService.getInstantLang()}/${ref}`;
+  }
+
+  buildImage(): string {
+    const [season, ...rest] = this.ref.split('-');
+    const part = rest.join('-');
+    return `/images/chapters/season${season}/${part}.png`;
   }
 }

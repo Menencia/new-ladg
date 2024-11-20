@@ -247,7 +247,9 @@
     "parts": [
       {
         "ref": "1-1",
-        "yt": "PLzy_TxHMKFxz0QQtrjGpU9C9Oz36Zz0WP"
+        "yt": "PLzy_TxHMKFxz0QQtrjGpU9C9Oz36Zz0WP",
+        "image": true,
+        "summary": true
       },
       {
         "ref": "1-2",
