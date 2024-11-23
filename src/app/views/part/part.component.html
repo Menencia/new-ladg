@@ -13,8 +13,8 @@
   <app-episodes-list class="grow" [data]="episodes" [parentRef]="ref" [type]="type"></app-episodes-list>
 
   <div class="xl:grow-0">
-    @if (part?.image) {
-      <img [src]="buildImage()" />
+    @if (logoPart) {
+      <advanced-image [cldImg]="logoPart"></advanced-image>
     }
   </div>
 </div>

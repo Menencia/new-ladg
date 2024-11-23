@@ -1,7 +1,7 @@
 export interface Part {
   ref: string;
   title?: string;
-  image?: string;
+  noLogo?: boolean;
   summary?: boolean;
   yt: string;
 }

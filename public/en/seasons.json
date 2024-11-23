@@ -353,27 +353,33 @@
       },
       {
         "ref": "13-1",
-        "yt": "PLzy_TxHMKFxzpbu6W0mfRo8WwPaT77EEv"
+        "yt": "PLzy_TxHMKFxzpbu6W0mfRo8WwPaT77EEv",
+        "noLogo": true
       },
       {
         "ref": "13-2",
-        "yt": "PLzy_TxHMKFxztkU6zRa23Uzsdds2xQ2G1"
+        "yt": "PLzy_TxHMKFxztkU6zRa23Uzsdds2xQ2G1",
+        "noLogo": true
       },
       {
         "ref": "14-1",
-        "yt": "PLzy_TxHMKFxx65YpjLhF2RNkq21F6hOlQ"
+        "yt": "PLzy_TxHMKFxx65YpjLhF2RNkq21F6hOlQ",
+        "noLogo": true
       },
       {
         "ref": "14-2",
-        "yt": "PLzy_TxHMKFxwgM-JQJByGLAO5kmP6Z2bm"
+        "yt": "PLzy_TxHMKFxwgM-JQJByGLAO5kmP6Z2bm",
+        "noLogo": true
       },
       {
         "ref": "15-1",
-        "yt": "PLzy_TxHMKFxwlmBSZPbUjrPNgM3lgcDGu"
+        "yt": "PLzy_TxHMKFxwlmBSZPbUjrPNgM3lgcDGu",
+        "noLogo": true
       },
       {
         "ref": "15-2",
-        "yt": "PLzy_TxHMKFxwqcs3v4WiXFAbWqHjZa_N6"
+        "yt": "PLzy_TxHMKFxwqcs3v4WiXFAbWqHjZa_N6",
+        "noLogo": true
       }
     ]
   }
