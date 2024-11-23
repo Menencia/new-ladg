@@ -1,0 +1,18 @@
+[
+  {
+    "ref": "1",
+    "title": "Histoire 1",
+    "video": {
+      "duration": "4:26",
+      "yt": "y0smFGXJry8"
+    }
+  },
+  {
+    "ref": "2",
+    "title": "Histoire 2",
+    "video": {
+      "duration": "1:53",
+      "yt": "sYjbHCV9iMo"
+    }
+  }
+]
