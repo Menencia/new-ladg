@@ -53,8 +53,8 @@ export class PartComponent {
       if (type && lang && ref) {
         this.type = type as BreadcrumbType;
         this.ref = ref;
-        this.dataService.setLang(lang);
         if (type === BreadcrumbType.STORY) {
+          console.log('params', type, lang, ref);
           this.loadStory(lang);
         }
         if (type === BreadcrumbType.STORY_EVENT && lang === 'fr') {
@@ -115,6 +115,6 @@ export class PartComponent {
   }
 
   buildUrl(ref: string): string {
-    return `/chapter/${this.dataService.getInstantLang()}/${ref}`;
+    return `/story/${this.dataService.getInstantLang()}/${ref}`;
   }
 }
